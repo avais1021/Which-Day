@@ -68,7 +68,8 @@
 
     <div class="main">
 
-        <p class="info"> <span>only do the</span> write number of date . This will show you what day in this month it is on that date.
+        <p class="info"> <span>only do the</span> write number of date . This will show you what day in this month it is
+            on that date.
         </p>
         <h2 id="output"></h2>
         <input type="number" id="number">
@@ -85,15 +86,29 @@
 
 
         const findDay = (first) => {
-            // var date = new Date(2023 , 5 , 1);
-            var fYear = new Date().getFullYear();
-            var fMonth = new Date().getMonth();
-            var date = new Date(fYear, fMonth, first);
-            var nDay = date.getDay();
-            var daylist = ["Sunday", "Monday", "Tuesday", "Wednesday ", "Thursday", "Friday", "Saturday"];
-            output.innerHTML = daylist[nDay]
-            console.log(daylist[nDay]);
-        }
+                debugger
+                // var date = new Date(2023 , 5 , 1);
+                var fYear = new Date().getFullYear();
+                var fMonth = new Date().getMonth();
+                console.log('fmotnt', fMonth);
+
+                var test = new Date(fYear, fMonth, 0).getDate();
+                var test2 = test - 1;
+                console.log('test', test2);
+                if (first <= test2 && first != 0 && first >0) {
+                    var date = new Date(fYear, fMonth, first);
+                    console.log('count_day', date.getDate());
+                    var nDay = date.getDay();
+                    var daylist = ["Sunday", "Monday", "Tuesday", "Wednesday ", "Thursday", "Friday", "Saturday"];
+                    output.innerHTML = daylist[nDay]
+                    console.log(daylist[nDay]);
+                } else if (first <= 0) {
+                    output.innerHTML = '0 and negative value is not allowed'
+                } else {
+                    output.innerHTML = 'Last date is ' + test2;
+                }
+
+            }
 
         const play = () => {
             // alert(123)
@@ -102,6 +117,7 @@
         check.addEventListener('click', play)
 
         findDay(numVal);
+
 
     </script>
 </body>
