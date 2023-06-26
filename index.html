@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Day</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 50px;
+            padding: 0 20px;
+        }
+
+        .info {
+            font-size: 20px;
+            font-family: math;
+            font-weight: 900;
+        }
+
+        .info span {
+            color: red;
+            font-size: 24px;
+        }
+
+        button {
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(21, 76, 116, 1) 9%, rgba(0, 0, 0, 1) 15%, rgba(21, 76, 116, 1) 86%);
+            color: white;
+            padding: 5px 20px;
+            letter-spacing: 1px;
+            margin: 0 auto;
+            border: 2px white solid;
+            border-radius: 5px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        input {
+            max-width: 180px;
+            width: 100%;
+            padding: 6px 7px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 35px;
+            font-family: cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- only do the write number of date .
+    This will show you what day it is on that date. -->
+
+    <div class="main">
+
+        <p class="info"> <span>only do the</span> write number of date . This will show you what day it is on that date.
+        </p>
+        <h2 id="output"></h2>
+        <input type="number" id="number">
+        <button id="check">Check</button>
+    </div>
+
+    <script>
+        const check = document.querySelector('#check');
+        const output = document.querySelector('#output');
+        let number = document.querySelector('#number');
+        let numVal = number.value = new Date().getDate();
+
+        // console.log('number', numVal);
+
+
+        const findDay = (first) => {
+            // var date = new Date(2023 , 5 , 1);
+            var fYear = new Date().getFullYear();
+            var fMonth = new Date().getMonth();
+            var date = new Date(fYear, fMonth, first);
+            var nDay = date.getDay();
+            var daylist = ["Sunday", "Monday", "Tuesday", "Wednesday ", "Thursday", "Friday", "Saturday"];
+            output.innerHTML = daylist[nDay]
+            console.log(daylist[nDay]);
+        }
+
+        const play = () => {
+            // alert(123)
+            findDay(number.value)
+        }
+        check.addEventListener('click', play)
+
+        findDay(numVal);
+
+    </script>
+</body>
+
+</html>
